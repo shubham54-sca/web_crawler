@@ -5,10 +5,11 @@ import com.crawler.api.models.{CrawlerRequest, JsonProtocols}
 import com.crawler.api.services.WebCrawlerService
 import com.crawler.api.utils.Logging
 
+class WebCrawlerRoutes(webCrawlerService: WebCrawlerService) extends Directives with JsonProtocols with Logging {
 
-
-class WebCrawlerRoutes(webCrawlerService: WebCrawlerService) extends Directives with JsonProtocols with Logging{
-
+  /**
+   * Post: {{url}}/api/crawl body:{ "urls":[] }
+    */
   val routes: Route = path("api" / "crawl") {
     post {
       entity(as[CrawlerRequest]) { request =>

@@ -7,8 +7,14 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.util.control.NonFatal
 
-class WebCrawlerService(crawler: Crawler) extends Logging{
+class WebCrawlerService(crawler: Crawler) extends Logging {
 
+  /** Take a list of url to crawl concurrently and give back combine result of concurrently process urls crawl data.
+    * @param urls
+    *   , the urls need to be crawl
+    * @return
+    *   Future[CrawlerResponse]
+    */
   def crawlWebsites(urls: List[String]): Future[CrawlerResponse] = {
     infoLog("Process start to crawl websites")
     crawler

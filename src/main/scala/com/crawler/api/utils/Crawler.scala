@@ -8,13 +8,24 @@ import scala.concurrent.Future
 
 class Crawler {
 
-  def crawl(url : String):Future[CrawlerResponseData] = Future{
-   val data = Jsoup.connect(url).get().data()
+  /** Run task on thread
+    * @param url
+    *   , website url to be provided
+    * @return
+    *   Future[CrawlerResponseData]
+    */
+  def crawl(url: String): Future[CrawlerResponseData] = Future {
+    val data = Jsoup.connect(url).get().data()
     CrawlerResponseData(url, data)
   }
 
-  def crawl(urls: List[String]):Future[List[CrawlerResponseData]] = {
+  /** Transform the List(Future[CrawlerResponseData]) to Future(List[CrawlerResponseData])
+    * @param urls
+    *   , List of website url to be provided
+    * @return
+    *   Future(List[CrawlerResponseData])
+    */
+  def crawl(urls: List[String]): Future[List[CrawlerResponseData]] =
     Future.sequence(urls.map(crawl))
-  }
 
 }
