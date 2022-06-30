@@ -5,6 +5,7 @@ object Dependencies {
   val akkaHttpVersion  = "10.2.9"
   val jsoupVersion     = "1.15.1"
   val scalaTestVersion = "3.2.12"
+  val logbackVersion   = "1.2.4"
 
   lazy val akka            = "com.typesafe.akka" %% "akka-actor"           % akkaVersion
   lazy val akkaHttp        = "com.typesafe.akka" %% "akka-http"            % akkaHttpVersion
@@ -15,6 +16,7 @@ object Dependencies {
   lazy val akkaHttpTestKit = "com.typesafe.akka" %% "akka-http-testkit"    % akkaHttpVersion % Test
   lazy val jsoup           = "org.jsoup"          % "jsoup"                % jsoupVersion
   lazy val scalaTest       = "org.scalatest"     %% "scalatest"            % scalaTestVersion
+  lazy val logback         = "ch.qos.logback"     % "logback-classic"      % logbackVersion
 
   lazy val webCrawlerDependencies = Seq(
     akka,
@@ -25,6 +27,7 @@ object Dependencies {
     akkaTestKit,
     akkaHttpTestKit,
     jsoup,
-    scalaTest
+    scalaTest,
+    logback
   )
 }
